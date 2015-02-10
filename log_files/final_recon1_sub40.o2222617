@@ -1,0 +1,979 @@
+TACC: Setting memory limits for job 2222617 to unlimited KB
+TACC: Dumping job script:
+--------------------------------------------------------------------------------
+#!/bin/csh
+#
+# SGE control file automatically created by launch
+# Using parametric launcher with control file: fs_recon1.sh
+#$ -V                    #Inherit the submission environment
+#$ -cwd                  # Start job in submission directory
+#$ -j y                  # Combine stderr and stdout
+#$ -N final_recon1_sub40 # Job Name
+#$ -A Analysis_Lonestar
+#$ -o $JOB_NAME.o$JOB_ID # Name of the output file (eg. myMPI.oJobID)
+#$ -pe 1way 12 # 
+#$ -q normal
+#$ -l h_rt=12:00:00 #
+#----------------
+# Job Submission
+#----------------
+umask 2
+
+module load launcher
+module swap gcc intel
+setenv EXECUTABLE     $TACC_LAUNCHER_DIR/init_launcher
+setenv CONTROL_FILE fs_recon1.sh
+setenv WORKDIR .
+cd $WORKDIR/
+echo " WORKING DIR:   $WORKDIR/"
+$TACC_LAUNCHER_DIR/paramrun $EXECUTABLE $CONTROL_FILE
+echo " "
+echo " Parameteric Job Complete"
+echo " "
+--------------------------------------------------------------------------------
+TACC: Done.
+setenv: Too many arguments.
+
+Lmod Error: Swap failed: "gcc" is not loaded.
+
+ WORKING DIR:   ./
+TACC: Starting up job 2222617
+TACC: Setup complete. Running job script.
+TACC: starting parallel tasks...
+Warning: Permanently added 'c323-214.ls4.tacc.utexas.edu' (RSA) to the list of known hosts.
+
+Lmod Warning: Did not find: hdf5
+
+Try: "module spider hdf5"
+
+Lmod Warning: Did not find: hdf5
+
+Try: "module spider hdf5"
+--------------------------------------------------
+TACC Launcher -> 1 processors allocated.
+TACC Launcher -> 1 total tasks to complete.
+--------------------------------------------------
+ 
+TACC Launcher -> Iniating task 1 on c323-214.ls4.tacc.utexas.edu (recon-all -no-isrunning -autorecon1 -sd /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer -subjid sugar_brain_sb_0017)
+Subject Stamp: freesurfer-Linux-centos4_x86_64-stable-pub-v5.3.0
+Current Stamp: freesurfer-Linux-centos4_x86_64-stable-pub-v5.3.0
+INFO: SUBJECTS_DIR is /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer
+Actual FREESURFER_HOME /corral-repl/utexas/poldracklab/software_lonestar/freesurfer-5.3.0
+-rw-rw-r-- 1 gshearre G-802037 371036 Oct 10 10:32 /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/scripts/recon-all.log
+Linux c323-214.ls4.tacc.utexas.edu 2.6.18-194.32.1.el5_TACC #2 SMP Fri Mar 18 11:27:58 CDT 2011 x86_64 x86_64 x86_64 GNU/Linux
+INFO: current FREESURFER_HOME does not match that of previous processing.
+    Current: /corral-repl/utexas/poldracklab/software_lonestar/freesurfer
+    Previous: /corral-repl/utexas/poldracklab/software_lonestar/freesurfer/
+cp: cannot create regular file `/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/scripts/recon-all.local-copy': Permission denied
+#--------------------------------------------
+#@# MotionCor Fri Oct 10 11:46:26 CDT 2014
+Found 1 runs
+/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/orig/001.mgz
+Checking for (invalid) multi-frame inputs...
+WARNING: only one run found. This is OK, but motion
+correction cannot be performed on one run, so I'll
+copy the run to rawavg and continue.
+
+ cp /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/orig/001.mgz /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/rawavg.mgz 
+
+/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017
+
+ mri_convert /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/rawavg.mgz /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/orig.mgz --conform 
+
+mri_convert /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/rawavg.mgz /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/orig.mgz --conform 
+$Id: mri_convert.c,v 1.179.2.7 2012/09/05 21:55:16 mreuter Exp $
+reading from /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/rawavg.mgz...
+TR=2400.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (0.995828, -0.0853458, 0.0322933)
+j_ras = (0.0874651, 0.993621, -0.0711864)
+k_ras = (-0.0260118, 0.073714, 0.99694)
+Original Data has (0.8, 0.800781, 0.800781) mm size and (256, 256, 256) voxels.
+Data is conformed to 1 mm size and 256 voxels for all directions
+changing data type from float to uchar (noscale = 0)...
+MRIchangeType: Building histogram 
+Reslicing using trilinear interpolation 
+writing to /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/orig.mgz...
+
+ mri_add_xform_to_header -c /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/transforms/talairach.xfm /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/orig.mgz /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/orig.mgz 
+
+INFO: extension is mgz
+#--------------------------------------------
+#@# Talairach Fri Oct 10 11:46:47 CDT 2014
+/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri
+
+ mri_nu_correct.mni --n 1 --proto-iters 1000 --distance 50 --no-rescale --i orig.mgz --o orig_nu.mgz 
+
+
+ talairach_avi --i orig_nu.mgz --xfm transforms/talairach.auto.xfm 
+
+
+INFO: transforms/talairach.xfm already exists!
+The new transforms/talairach.auto.xfm will not be copied to transforms/talairach.xfm
+This is done to retain any edits made to transforms/talairach.xfm
+Add the -clean-tal flag to recon-all to overwrite transforms/talairach.xfm
+
+#--------------------------------------------
+#@# Talairach Failure Detection Fri Oct 10 11:50:37 CDT 2014
+/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri
+
+ talairach_afd -T 0.005 -xfm transforms/talairach.xfm 
+
+talairach_afd: Talairach Transform: transforms/talairach.xfm OK (p=0.6439, pval=0.3663 >= threshold=0.0050)
+
+ awk -f /corral-repl/utexas/poldracklab/software_lonestar/freesurfer/bin/extract_talairach_avi_QA.awk /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/transforms/talairach_avi.log 
+
+
+ tal_QC_AZS /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/transforms/talairach_avi.log 
+
+TalAviQA: 0.97368
+z-score: -1
+#--------------------------------------------
+#@# Nu Intensity Correction Fri Oct 10 11:50:38 CDT 2014
+
+ mri_nu_correct.mni --i orig.mgz --o nu.mgz --uchar transforms/talairach.xfm --n 2 
+
+/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri
+/corral-repl/utexas/poldracklab/software_lonestar/freesurfer/bin/mri_nu_correct.mni
+--i orig.mgz --o nu.mgz --uchar transforms/talairach.xfm --n 2
+nIters 2
+$Id: mri_nu_correct.mni,v 1.18.2.1 2013/01/09 21:23:42 nicks Exp $
+Linux c323-214.ls4.tacc.utexas.edu 2.6.18-194.32.1.el5_TACC #2 SMP Fri Mar 18 11:27:58 CDT 2011 x86_64 x86_64 x86_64 GNU/Linux
+Fri Oct 10 11:50:38 CDT 2014
+Program nu_correct, built from:
+Package MNI N3, version 1.12.0, compiled by @login4.ls4.tacc.utexas.edu (x86_64-unknown-linux-gnu) on 2012-07-28 at 16:56:44
+tmpdir is ./tmp.mri_nu_correct.mni.8416
+/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri
+mri_convert orig.mgz ./tmp.mri_nu_correct.mni.8416/nu0.mnc -odt float
+mri_convert orig.mgz ./tmp.mri_nu_correct.mni.8416/nu0.mnc -odt float 
+$Id: mri_convert.c,v 1.179.2.7 2012/09/05 21:55:16 mreuter Exp $
+reading from orig.mgz...
+TR=2400.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 6.17001e-09, 5.58794e-09)
+j_ras = (0, 0, -1)
+k_ras = (-1.31549e-08, 1, 7.45058e-09)
+changing data type from uchar to float (noscale = 0)...
+writing to ./tmp.mri_nu_correct.mni.8416/nu0.mnc...
+ 
+--------------------------------------------------------
+Iteration 1 Fri Oct 10 11:50:45 CDT 2014
+nu_correct -clobber ./tmp.mri_nu_correct.mni.8416/nu0.mnc ./tmp.mri_nu_correct.mni.8416/nu1.mnc -tmpdir ./tmp.mri_nu_correct.mni.8416/0/
+[gregoryb@c323-214.ls4.tacc.utexas.edu:/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/] [2014-10-10 11:50:45] running:
+  /corral-repl/utexas/poldracklab/software_lonestar/bin/nu_estimate_np_and_em -parzen -log -sharpen 0.15 0.01 -iterations 50 -stop 0.001 -shrink 4 -auto_mask -nonotify -b_spline 1.0e-7 -distance 200 -quiet -execute -clobber -nokeeptmp -tmpdir ./tmp.mri_nu_correct.mni.8416/0/ ./tmp.mri_nu_correct.mni.8416/nu0.mnc ./tmp.mri_nu_correct.mni.8416/nu1.imp
+
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+Number of iterations: 50 
+CV of field change: 0.00160668
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+ 
+ 
+--------------------------------------------------------
+Iteration 2 Fri Oct 10 11:52:35 CDT 2014
+nu_correct -clobber ./tmp.mri_nu_correct.mni.8416/nu1.mnc ./tmp.mri_nu_correct.mni.8416/nu2.mnc -tmpdir ./tmp.mri_nu_correct.mni.8416/1/
+[gregoryb@c323-214.ls4.tacc.utexas.edu:/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/] [2014-10-10 11:52:35] running:
+  /corral-repl/utexas/poldracklab/software_lonestar/bin/nu_estimate_np_and_em -parzen -log -sharpen 0.15 0.01 -iterations 50 -stop 0.001 -shrink 4 -auto_mask -nonotify -b_spline 1.0e-7 -distance 200 -quiet -execute -clobber -nokeeptmp -tmpdir ./tmp.mri_nu_correct.mni.8416/1/ ./tmp.mri_nu_correct.mni.8416/nu1.mnc ./tmp.mri_nu_correct.mni.8416/nu2.imp
+
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 10485760
+Processing:.................................................................Done
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+Number of iterations: 37 
+CV of field change: 0.000997343
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+About to loop, max_buffer is 4194304
+ 
+ 
+ 
+mri_binarize --i ./tmp.mri_nu_correct.mni.8416/nu2.mnc --min -1 --o ./tmp.mri_nu_correct.mni.8416/ones.mgz
+
+$Id: mri_binarize.c,v 1.26.2.1 2011/04/08 15:40:50 greve Exp $
+cwd /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri
+cmdline mri_binarize --i ./tmp.mri_nu_correct.mni.8416/nu2.mnc --min -1 --o ./tmp.mri_nu_correct.mni.8416/ones.mgz 
+sysname  Linux
+hostname c323-214.ls4.tacc.utexas.edu
+machine  x86_64
+user     gregoryb
+
+input      ./tmp.mri_nu_correct.mni.8416/nu2.mnc
+frame      0
+nErode3d   0
+nErode2d   0
+output     ./tmp.mri_nu_correct.mni.8416/ones.mgz
+Binarizing based on threshold
+min        -1
+max        +infinity
+binval        1
+binvalnot     0
+Found 16777216 values in range
+Counting number of voxels
+Found 16777216 voxels in final mask
+mri_binarize done
+mri_segstats --id 1 --seg ./tmp.mri_nu_correct.mni.8416/ones.mgz --i orig.mgz --sum ./tmp.mri_nu_correct.mni.8416/sum.junk --avgwf ./tmp.mri_nu_correct.mni.8416/input.mean.dat
+
+$Id: mri_segstats.c,v 1.75.2.9 2013/02/16 00:09:33 greve Exp $
+cwd 
+cmdline mri_segstats --id 1 --seg ./tmp.mri_nu_correct.mni.8416/ones.mgz --i orig.mgz --sum ./tmp.mri_nu_correct.mni.8416/sum.junk --avgwf ./tmp.mri_nu_correct.mni.8416/input.mean.dat 
+sysname  Linux
+hostname c323-214.ls4.tacc.utexas.edu
+machine  x86_64
+user     gregoryb
+UseRobust  0
+Loading ./tmp.mri_nu_correct.mni.8416/ones.mgz
+Loading orig.mgz
+Voxel Volume is 1 mm^3
+Generating list of segmentation ids
+Found   1 segmentations
+Computing statistics for each segmentation
+  0     1                                     16777216  16777216.000
+
+Reporting on   1 segmentations
+Computing spatial average of each frame
+  0
+Writing to ./tmp.mri_nu_correct.mni.8416/input.mean.dat
+mri_segstats done
+mri_segstats --id 1 --seg ./tmp.mri_nu_correct.mni.8416/ones.mgz --i ./tmp.mri_nu_correct.mni.8416/nu2.mnc --sum ./tmp.mri_nu_correct.mni.8416/sum.junk --avgwf ./tmp.mri_nu_correct.mni.8416/output.mean.dat
+
+$Id: mri_segstats.c,v 1.75.2.9 2013/02/16 00:09:33 greve Exp $
+cwd 
+cmdline mri_segstats --id 1 --seg ./tmp.mri_nu_correct.mni.8416/ones.mgz --i ./tmp.mri_nu_correct.mni.8416/nu2.mnc --sum ./tmp.mri_nu_correct.mni.8416/sum.junk --avgwf ./tmp.mri_nu_correct.mni.8416/output.mean.dat 
+sysname  Linux
+hostname c323-214.ls4.tacc.utexas.edu
+machine  x86_64
+user     gregoryb
+UseRobust  0
+Loading ./tmp.mri_nu_correct.mni.8416/ones.mgz
+Loading ./tmp.mri_nu_correct.mni.8416/nu2.mnc
+Voxel Volume is 1 mm^3
+Generating list of segmentation ids
+Found   1 segmentations
+Computing statistics for each segmentation
+  0     1                                     16777216  16777216.000
+
+Reporting on   1 segmentations
+Computing spatial average of each frame
+  0
+Writing to ./tmp.mri_nu_correct.mni.8416/output.mean.dat
+mri_segstats done
+mris_calc -o ./tmp.mri_nu_correct.mni.8416/nu2.mnc ./tmp.mri_nu_correct.mni.8416/nu2.mnc mul 1.00960568842921784098
+Saving result to './tmp.mri_nu_correct.mni.8416/nu2.mnc' (type = MINC )                       [ ok ]
+mri_convert ./tmp.mri_nu_correct.mni.8416/nu2.mnc nu.mgz --like orig.mgz
+mri_convert ./tmp.mri_nu_correct.mni.8416/nu2.mnc nu.mgz --like orig.mgz 
+$Id: mri_convert.c,v 1.179.2.7 2012/09/05 21:55:16 mreuter Exp $
+reading from ./tmp.mri_nu_correct.mni.8416/nu2.mnc...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 6.17001e-09, 5.58794e-09)
+j_ras = (0, 0, -1)
+k_ras = (-1.31549e-08, 1, 7.45058e-09)
+INFO: transform src into the like-volume: orig.mgz
+writing to nu.mgz...
+mri_make_uchar nu.mgz transforms/talairach.xfm nu.mgz
+type change took 0 minutes and 7 seconds.
+mapping (30, 147) to ( 3, 110)
+ 
+ 
+Fri Oct 10 11:55:01 CDT 2014
+mri_nu_correct.mni done
+
+ mri_add_xform_to_header -c /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri/transforms/talairach.xfm nu.mgz nu.mgz 
+
+INFO: extension is mgz
+#--------------------------------------------
+#@# Intensity Normalization Fri Oct 10 11:55:02 CDT 2014
+/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri
+
+ mri_normalize -g 1 nu.mgz T1.mgz 
+
+using max gradient = 1.000
+reading from nu.mgz...
+normalizing image...
+talairach transform
+ 1.003  -0.025   0.088  -2.038;
+-0.009   1.077   0.341   7.493;
+-0.099  -0.304   1.065  -12.144;
+ 0.000   0.000   0.000   1.000;
+processing without aseg, no1d=0
+MRInormInit(): 
+INFO: Modifying talairach volume c_(r,a,s) based on average_305
+MRInormalize(): 
+MRIsplineNormalize(): npeaks = 1
+ERROR: number of peaks must be > 1 for spline
+1d normalization failed - trying no1d...
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+
+Iterating 2 times
+---------------------------------
+3d normalization pass 1 of 2
+white matter peak found at 117
+white matter peak found at 97
+gm peak at 68 (68), valley at 36 (36)
+csf peak at 10, setting threshold to 48
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+---------------------------------
+3d normalization pass 2 of 2
+white matter peak found at 111
+white matter peak found at 91
+gm peak at 66 (66), valley at 35 (35)
+csf peak at 10, setting threshold to 47
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+Done iterating ---------------------------------
+writing output to T1.mgz
+3D bias adjustment took 2 minutes and 25 seconds.
+#--------------------------------------------
+#@# Skull Stripping Fri Oct 10 11:57:28 CDT 2014
+/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0017/mri
+
+ mri_watershed -keep brainmask.auto.mgz brainmask.mgz brainmask.mgz -T1 -brain_atlas /corral-repl/utexas/poldracklab/software_lonestar/freesurfer/average/RB_all_withskull_2008-03-26.gca transforms/talairach_with_skull.lta T1.mgz brainmask.auto.mgz 
+
+
+Keeping brain edits brainmask.auto.mgz brainmask.mgz
+Mode:          T1 normalized volume
+Mode:          Use the information of atlas (default parms, --help for details)
+
+*********************************************************
+The input file is T1.mgz
+The output file is brainmask.auto.mgz
+Weighting the input with atlas information before watershed
+
+*************************WATERSHED**************************
+Sorting...
+      first estimation of the COG coord: x=135 y=129 z=141 r=78
+      first estimation of the main basin volume: 2031634 voxels
+      Looking for seedpoints 
+        2 found in the cerebellum 
+        10 found in the rest of the brain 
+      global maximum in x=150, y=101, z=166, Imax=255
+      CSF=14, WM_intensity=110, WM_VARIANCE=5
+      WM_MIN=110, WM_HALF_MIN=110, WM_HALF_MAX=110, WM_MAX=110 
+      preflooding height equal to 10 percent
+done.
+Analyze...
+
+      main basin size=14447551234 voxels, voxel volume =1.000 
+                     = 14447551234 mmm3 = 14447551.488 cm3
+done.
+PostAnalyze...Basin Prior
+ 118 basins merged thanks to atlas 
+      ***** 0 basin(s) merged in 1 iteration(s)
+      ***** 0 voxel(s) added to the main basin
+done.
+Weighting the input with prior template 
+
+****************TEMPLATE DEFORMATION****************
+
+      second estimation of the COG coord: x=130,y=120, z=121, r=9258 iterations
+^^^^^^^^ couldn't find WM with original limits - expanding ^^^^^^
+
+   GLOBAL      CSF_MIN=0, CSF_intensity=23, CSF_MAX=58 , nb = 39888
+  RIGHT_CER    CSF_MIN=0, CSF_intensity=23, CSF_MAX=48 , nb = 2574
+  LEFT_CER     CSF_MIN=0, CSF_intensity=24, CSF_MAX=52 , nb = 2232
+ RIGHT_BRAIN   CSF_MIN=0, CSF_intensity=23, CSF_MAX=65 , nb = 17154
+ LEFT_BRAIN    CSF_MIN=0, CSF_intensity=23, CSF_MAX=56 , nb = 17712
+    OTHER      CSF_MIN=0, CSF_intensity=14, CSF_MAX=40 , nb = 216
+   
+                     CSF_MAX  TRANSITION  GM_MIN  GM
+    GLOBAL     
+  before analyzing :    58,      46,        37,   67
+  after  analyzing :    40,      46,        46,   51
+   RIGHT_CER   
+  before analyzing :    48,      41,        34,   63
+  after  analyzing :    35,      41,        41,   46
+   LEFT_CER    
+  before analyzing :    52,      52,        52,   82
+  after  analyzing :    45,      52,        52,   59
+  RIGHT_BRAIN  
+  before analyzing :    65,      50,        40,   70
+  after  analyzing :    43,      50,        50,   55
+  LEFT_BRAIN   
+  before analyzing :    56,      45,        36,   67
+  after  analyzing :    39,      45,        45,   50
+     OTHER     
+  before analyzing :    40,      38,        37,   67
+  after  analyzing :    32,      38,        38,   45
+      mri_strip_skull: done peeling brain
+      highly tesselated surface with 10242 vertices
+      matching...66 iterations
+
+*********************VALIDATION*********************
+curvature mean = -0.014, std = 0.013
+curvature mean = 68.152, std = 6.899
+
+No Rigid alignment: -atlas Mode Off (basic atlas / no registration)
+      before rotation: sse = 5.03, sigma = 7.98
+      after  rotation: sse = 5.03, sigma = 7.98
+Localization of inacurate regions: Erosion-Dilation steps
+      the sse mean is  5.56, its var is  7.14   
+      before Erosion-Dilatation  2.58% of inacurate vertices
+      after  Erosion-Dilatation  1.68% of inacurate vertices
+      Validation of the shape of the surface done.
+Scaling of atlas fields onto current surface fields
+
+********FINAL ITERATIVE TEMPLATE DEFORMATION********
+Compute Local values csf/gray
+Fine Segmentation...39 iterations
+
+      mri_strip_skull: done peeling brain
+
+Brain Size = 1581463 voxels, voxel volume = 1.000 mm3
+           = 1581463 mmm3 = 1581.463 cm3
+
+
+******************************
+Saving brainmask.auto.mgz
+Keeping edits ...
+Saving kept edits to brainmask.mgz .....
+done
+
+INFO: brainmask.mgz already exists!
+The new brainmask.auto.mgz will not be copied to brainmask.mgz.
+This is done to retain any edits made to brainmask.mgz.
+Add the -clean-bm flag to recon-all to overwrite brainmask.mgz.
+
+
+#------------------------------------------
+
+Started at Fri Oct 10 11:46:09 CDT 2014 
+Ended   at Fri Oct 10 11:57:54 CDT 2014
+#@#%# recon-all-run-time-hours 0.196
+recon-all -s sugar_brain_sb_0017 finished without error at Fri Oct 10 11:57:54 CDT 2014
+done
+TACC: Shutting down parallel environment.
+TACC: Shutdown complete. Exiting.
+ 
+ Parameteric Job Complete
+ 
+TACC: Cleaning up after job: 2222617
+TACC: Done.

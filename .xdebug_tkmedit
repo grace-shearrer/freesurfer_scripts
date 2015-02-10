@@ -1,0 +1,10 @@
+tkmedit started: Wed Dec 10 10:47:13 2014
+
+	/corral-repl/utexas/poldracklab/software_lonestar/freesurfer/tktools/tkmedit.bin sugar_brain_sb_007 brainmask.mgz lh.white -aux wm.mgz -aux-surface rh.white 
+
+$Id: tkmedit.c,v 1.343 2011/03/01 01:41:22 nicks Exp $ $Name: stable5 $
+Set user home dir to /corral-repl/utexas/poldracklab/data/sugar_brain/scripts/freesurfer_scripts
+Set subject home dir to /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_007
+Using interface file /corral-repl/utexas/poldracklab/software_lonestar/freesurfer/tktools/tkmedit.tcl
+Tcl: Successfully parsed tkmedit.tcl
+Tcl: Successfully parsed tkm_functional.tcl
