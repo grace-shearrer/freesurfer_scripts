@@ -1,0 +1,191 @@
+TACC: Setting memory limits for job 2441320 to unlimited KB
+TACC: Dumping job script:
+--------------------------------------------------------------------------------
+#!/bin/csh
+#
+# SGE control file automatically created by launch
+# Using parametric launcher with control file: fs_edits.sh
+#$ -V                    #Inherit the submission environment
+#$ -cwd                  # Start job in submission directory
+#$ -j y                  # Combine stderr and stdout
+#$ -N ar23_25wm # Job Name change this to make sense
+#$ -A Analysis_Lonestar
+#$ -o $JOB_NAME.o$JOB_ID # Name of the output file (eg. myMPI.oJobID)
+#$ -pe 1way 12 # Number of subjects x 12
+#$ -q normal
+#$ -l h_rt=12:00:00 # Set the time, usualy a minimum of 12 hours (hh:mm:ss)
+#----------------
+# Job Submission
+#----------------
+umask 2
+
+module load launcher
+module swap gcc intel
+setenv EXECUTABLE     $TACC_LAUNCHER_DIR/init_launcher
+setenv CONTROL_FILE fs_edits.sh
+setenv WORKDIR .
+cd $WORKDIR/
+echo " WORKING DIR:   $WORKDIR/"
+$TACC_LAUNCHER_DIR/paramrun $EXECUTABLE $CONTROL_FILE
+echo " "
+echo " Parameteric Job Complete"
+echo " "
+--------------------------------------------------------------------------------
+TACC: Done.
+
+Lmod Error: Swap failed: "gcc" is not loaded.
+
+ WORKING DIR:   ./
+TACC: Starting up job 2441320
+TACC: Setup complete. Running job script.
+TACC: starting parallel tasks...
+Warning: Permanently added 'c303-109.ls4.tacc.utexas.edu,206.76.192.204' (RSA) to the list of known hosts.
+--------------------------------------------------
+TACC Launcher -> 1 processors allocated.
+TACC Launcher -> 4 total tasks to complete.
+--------------------------------------------------
+ 
+TACC Launcher -> Iniating task 1 on c303-109.ls4.tacc.utexas.edu (recon-all -no-isrunning -autorecon2-wm -autorecon3 -sd /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer -subjid sugar_brain_sb_0025)
+Subject Stamp: freesurfer-Linux-centos4_x86_64-stable-pub-v5.3.0
+Current Stamp: freesurfer-Linux-centos4_x86_64-stable-pub-v5.3.0
+INFO: SUBJECTS_DIR is /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer
+Actual FREESURFER_HOME /corral-repl/utexas/poldracklab/software_lonestar/freesurfer-5.3.0
+-rwxrwx--- 1 poldrack G-802037 1490606 Feb 16 17:04 /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0025/scripts/recon-all.log
+Linux c303-109.ls4.tacc.utexas.edu 2.6.18-194.32.1.el5_TACC #2 SMP Fri Mar 18 11:27:58 CDT 2011 x86_64 x86_64 x86_64 GNU/Linux
+INFO: current FREESURFER_HOME does not match that of previous processing.
+    Current: /corral-repl/utexas/poldracklab/software_lonestar/freesurfer
+    Previous: /corral-repl/utexas/poldracklab/software_lonestar/freesurfer/
+#--------------------------------------------
+#@# Intensity Normalization2 Fri Feb 20 11:34:16 CST 2015
+/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0025/mri
+
+ mri_normalize -f /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0025/tmp/control.dat -aseg aseg.mgz -mask brainmask.mgz norm.mgz brain.mgz 
+
+using control points from file /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0025/tmp/control.dat...
+using segmentation for initial intensity normalization
+using MR volume brainmask.mgz to mask input volume...
+reading from norm.mgz...
+Reading aseg aseg.mgz
+normalizing image...
+Reading 7 control points...
+only using 7 control points from file, mean 81.9, scaling by 1.34...
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+processing with aseg
+removing outliers in the aseg WM...
+5824 control points removed
+Building bias image
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 0...
+Smoothing with sigma 8
+Applying bias correction
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+
+Iterating 2 times
+---------------------------------
+3d normalization pass 1 of 2
+white matter peak found at 111
+white matter peak found at 107
+gm peak at 70 (70), valley at 34 (34)
+csf peak at 35, setting threshold to 58
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+---------------------------------
+3d normalization pass 2 of 2
+white matter peak found at 111
+white matter peak found at 110
+gm peak at 70 (70), valley at 35 (35)
+csf peak at 35, setting threshold to 58
+building Voronoi diagram...
+performing soap bubble smoothing, sigma = 8...
+Done iterating ---------------------------------
+writing output to brain.mgz
+3D bias adjustment took 4 minutes and 8 seconds.
+#--------------------------------------------
+#@# Mask BFS Fri Feb 20 11:38:27 CST 2015
+/corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0025/mri
+
+ mri_mask -T 5 brain.mgz brainmask.mgz brain.finalsurfs.mgz 
+
+threshold mask volume at 5
+DoAbs = 0
+Found 1533991 voxels in mask (pct=  9.14)
+Writing masked volume to brain.finalsurfs.mgz...done.
+#--------------------------------------------
+#@# WM Segmentation Fri Feb 20 11:38:29 CST 2015
+
+ mri_binarize --i wm.mgz --min 255 --max 255 --o wm255.mgz --count wm255.txt 
+
+
+$Id: mri_binarize.c,v 1.26.2.1 2011/04/08 15:40:50 greve Exp $
+cwd /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0025/mri
+cmdline mri_binarize --i wm.mgz --min 255 --max 255 --o wm255.mgz --count wm255.txt 
+sysname  Linux
+hostname c303-109.ls4.tacc.utexas.edu
+machine  x86_64
+user     cag4356
+
+input      wm.mgz
+frame      0
+nErode3d   0
+nErode2d   0
+output     wm255.mgz
+Binarizing based on threshold
+min        255
+max        255
+binval        1
+binvalnot     0
+Found 0 values in range
+Counting number of voxels
+Found 0 voxels in final mask
+mri_binarize done
+
+ mri_binarize --i wm.mgz --min 1 --max 1 --o wm1.mgz --count wm1.txt 
+
+
+$Id: mri_binarize.c,v 1.26.2.1 2011/04/08 15:40:50 greve Exp $
+cwd /corral-repl/utexas/poldracklab/data/sugar_brain/freesurfer/sugar_brain_sb_0025/mri
+cmdline mri_binarize --i wm.mgz --min 1 --max 1 --o wm1.mgz --count wm1.txt 
+sysname  Linux
+hostname c303-109.ls4.tacc.utexas.edu
+machine  x86_64
+user     cag4356
+
+input      wm.mgz
+frame      0
+nErode3d   0
+nErode2d   0
+output     wm1.mgz
+Binarizing based on threshold
+min        1
+max        1
+binval        1
+binvalnot     0
+Found 374 values in range
+Counting number of voxels
+Found 374 voxels in final mask
+mri_binarize done
+
+ rm wm1.mgz wm255.mgz 
+
+Found wm edits: 374 deletes, 0 fills
+
+ cp wm.mgz wm.seg.mgz 
+
+
+ mri_segment -keep brain.mgz wm.seg.mgz 
+
+preserving editing changes in output volume...
+doing initial intensity segmentation...
+using local statistics to label ambiguous voxels...
+computing class statistics for intensity windows...
+WM (104.0): 104.3 +- 6.9 [80.0 --> 125.0]
+GM (72.0) : 71.1 +- 9.3 [30.0 --> 96.0]
+setting bottom of white matter range to 80.4
+setting top of gray matter range to 89.6
+doing initial intensity segmentation...
+using local statistics to label ambiguous voxels...
+using local geometry to label remaining ambiguous voxels...
+
+reclassifying voxels using Gaussian border classifier...

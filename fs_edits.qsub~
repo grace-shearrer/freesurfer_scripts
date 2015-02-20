@@ -5,7 +5,7 @@
 #$ -V                    #Inherit the submission environment
 #$ -cwd                  # Start job in submission directory
 #$ -j y                  # Combine stderr and stdout
-#$ -N ar23_25_wm # Job Name change this to make sense
+#$ -N ar23_32_2.0# Job Name change this to make sense
 #$ -A Analysis_Lonestar
 #$ -o $JOB_NAME.o$JOB_ID # Name of the output file (eg. myMPI.oJobID)
 #$ -pe 1way 12 # Number of subjects x 12
